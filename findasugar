@@ -1,0 +1,36 @@
+import ant
+import turtle
+import random
+
+turtle.speed(0)
+
+#draw the square
+
+for i in range(4):
+    turtle.forward(300)
+    turtle.left(90)
+
+def checkAntTell(x,y):
+    ant.tell(x,y)
+    if 0 <= x <= 300:
+        if 0 <= y <= 300:
+            return 1
+    else:
+        return 0
+
+
+for i in range(3000):
+    x= random.randint(0,300)
+    y= random.randint(0,300)
+    a= ant.tell(x,y)
+    if checkAntTell(x,y) == 1:
+        turtle.penup()
+        turtle.goto(x,y)
+        turtle.pendown()
+        #pensize for the probability
+        pensize= int(a*10)
+        turtle.pensize(pensize)
+        turtle.pencolor('blue')
+        turtle.dot()
+    else:
+        checkAntTell(x,y) == 0
